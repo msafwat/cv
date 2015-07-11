@@ -1,0 +1,138 @@
+<style type="text/css">
+
+</style>
+<div class="container-fluid" id="id_div_container_body">    
+    <form class="form-horizontal well col-md-6 col-md-offset-3" method="post" action="/send_email" role="form">
+
+    	<fieldset>
+    		<legend>Email Form</legend>
+<div id="id_div_alert" style="display:none">
+
+    		<div class="alert alert-danger alert-dismissable" style="text-align:center">
+    		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+	    	<div id="id_div_alert_username" style="display:none">Username Is Mandatory And Maximum Length 128</div>
+	    	<div id="id_div_alert_email" style="display:none">Email Is Mandatory And Maximum Length 128 And Should Match Email Schema</div>
+	    	<div id="id_div_alert_subject" style="display:none">Subject Is Mandatory And Maximum Length 128</div>
+	    	<div id="id_div_alert_msg" style="display:none">Body Is Mandatory And Maximum Length 512</div>
+  		</div>
+</div>
+
+
+	      <div class="form-group" id='div_form_group_username'>
+	        <label for="id_username" class="control-label col-md-2" style="text-align:left;">Name: *</label>
+	        <div class="col-md-10">
+	           <div class="input-group">
+	            <div class="input-group-addon">
+	              <span class="glyphicon glyphicon-user"></span>
+	            </div>
+	            <input type="text" class="form-control" name="username" id="id_username" placeholder="Contact Name" />
+	           </div>
+	          <!--<span class="glyphicon glyphicon-remove form-control-feedback"></span>-->
+	        </div>
+	      </div>
+
+	      <div class="form-group" id='div_form_group_email'>
+	        <label for="id_email" class="control-label col-md-2" style="text-align:left;">Email: *</label>
+	        <div class="col-md-10">
+	           <div class="input-group">
+	            <div class="input-group-addon">
+	              <span class="glyphicon">@</span>
+	            </div>
+	            <input type="text" class="form-control" name="email" id="id_email" placeholder="Contact Email" />
+	           </div>
+	        </div>
+	      </div>
+
+	      <div class="form-group" id='div_form_group_subject'>
+	        <label for="id_subject" class="control-label col-md-2" style="text-align:left;">Subject: *</label>
+	        <div class="col-md-10">
+	           <input type="text" name="subject" id="id_subject" class="form-control" placeholder="Email Subject" />
+	        </div>
+	      </div>
+
+	      <div class="form-group" id='div_form_group_msg'>
+	        <label for="id_msg" class="control-label col-md-2" style="text-align:left;">Body: *</label>
+	        <div class="col-md-10">
+	          <textarea class="form-control" rows="5" name="msg" id="id_msg"></textarea>
+	        </div>
+	      </div>
+
+	      <div class="form-group">
+	        <label for="first" class="control-label col-md-2" style="text-align:left;">Title: *</label>
+	        <div class="col-md-10">
+	          <div class="btn-group" data-toggle="buttons">
+	            <label class="btn btn-primary active">
+	               <input type="radio" id="id_mr" name="title" value="mr" />
+	              Mr
+	            </label>
+	            <label class="btn btn-primary">
+	              <input type="radio" id="id_mrs" name="title" value="mrs" />
+	              Mrs
+	            </label>
+	            <label class="btn btn-primary">
+	              <input type="radio" id="id_ms" name="title" value="ms" />
+	              Ms
+	            </label>
+	            			<label class="btn btn-primary">
+	              				<input type="radio" id="id_miss" name="title" value="miss" />
+	              				Miss
+	            			</label>
+	          			</div>
+	        		</div>
+	      		</div>
+
+	      		<div class="form-group">
+	         		<button type="button" class="btn btn-success col-md-12" data-toggle="modal" data-target="#myModal">Send Email To Mostafa Safwat</button>
+	      		</div>
+
+	      		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	        		<div class="modal-dialog">
+	          			<div class="modal-content">
+	            			<div class="modal-header">
+	              				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	              				<h4 class="modal-title" id="myModalLabel"> Are you sure?</h4>
+	            			</div>
+	            			<div class="modal-body">
+	              			Please confirm email details?
+	            			</div>
+	            			<div class="modal-footer">
+	              				<button type="button" class="btn btn-default" data-dismiss="modal" id="id_btn_cancel">Cancel</button>
+	              				<button type="submit" class="btn btn-primary" onclick="return sbmt_confirm();">Confirm</button>
+	            			</div>
+	          			</div>
+	        		</div>
+	      		</div>
+
+	      		<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+	        		<div class="modal-dialog">
+	          			<div class="modal-content">
+	            			<div class="modal-header">
+	              				<h4 class="modal-title" id="myModalLabel2">Sending Email...</h4>
+	            			</div>
+	            			<div class="modal-body">
+	              				<div class="progress">
+	  								<div id="id_div_progress" class="progress-bar progress-bar-success progress-bar-striped" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 1%">
+	    								<span class="sr-only">50% Complete (success)</span>
+	  								</div>
+								</div>	
+	            			</div>
+	          			</div>
+	        		</div>
+	      		</div>
+      		</fieldset>
+
+    	</form>
+  	</div>
+
+<div class="container" id="id_div_success" style="display:none">
+	<div class="row">
+  		<div class="alert alert-success col-md-6 col-md-offset-3" style="text-align:center">
+	    	<div>Thank You For Sending Email To Me. I'll Check the Email And Back To You Soon.</div>
+  		</div>
+	</div>
+</div>
+
+
+  <script src="/scripts/msafwat_js_fw/form_inputs.js"></script>
+  <script src="/scripts/msafwat_js_fw/regex.js"></script>
+  <script src="/scripts/pages/send_email_page.js"></script>

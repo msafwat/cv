@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
+
+  <title>Moustafa Safwat - Senior Software Developer - CV</title>
+
+  <link rel="shortcut icon" href="images/favicon.ico">
+  
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+  <style>
+    body { 
+      padding-top: 70px; 
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" id="a_banar" href="msafwat.html">Senior Software Developer</a>
+      </div>
+      
+      <div class="collapse navbar-collapse" id="bs-navbar-collapse-1">
+        <!--role="menu"-->
+        <ul class="nav navbar-nav">
+          <!-- <li><a href="#" class="active">Current Page</a><span class="sr-only">current</span></li>-->
+          <li><a id="a_home" href="msafwat.html">Home</a></li>
+          <li class="active"><a id="a_form" href="form.html">Email Me</a></li>
+          <li class="dropdown">
+            <!--role="button"-->
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Articles <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="" style="font-weight:bold">HTML5</a></li>
+              <li class="divider"></li>
+              <li><a href="form.html?t=b">More HTML5</a></li>
+              <li><a href="form.html?t=b">Asynchronous operations</a></li>
+              <li><a href="form.html?t=b">Websocket</a></li>
+              <li><a href="form.html?t=b">Multimedia and Drawing</a></li>
+              <li><a href="form.html?t=b">Location-Aware</a></li>
+              <li><a href="form.html?t=b">Drag and Drop</a></li>
+              <li><a href="form.html?t=b">Store Data</a></li>
+              <li class="divider"></li>
+              <li><a href="" style="font-weight:bold">JavaScript</a></li>
+              <li class="divider"></li>
+              <li><a href="form.html?t=b">Essential JavaScript</a></li>
+              <li><a href="form.html?t=l">JQuery</a></li>
+              <li class="divider"></li>
+              <li><a href="" style="font-weight:bold">CSS3</a></li>
+              <li class="divider"></li>
+              <li><a href="form.html?t=b">Getting Started with CSS3</a></li>
+              <li class="divider"></li>
+              <li><a href="" style="font-weight:bold">Node.js</a></li>
+              <li class="divider"></li>
+              <li><a href="form.html?t=b">Start Server</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container-fluid">   
+  	<article> 
+	<strong>Creating JavaScript objects</strong><br/>
+	In JavaScript, everything is an object. Strings, numbers, and functions are all objects.
+Probably the simplest way to create an object in JavaScript is to use the object literal syntax.<br/>
+Object literals create an object from nothing, so these objects contain precisely what you assign to them and nothing more. No prototype object is associated with the created object.<br/><br/>
+
+In addition to using the JavaScript literal object syntax, JavaScript has an Object type, and you can use it to create an object programmatically. Object has a prototype object that is cloned when you use the new keyword to create a new Object instance. The prototype object has the following inherited methods.<br/>
+■ constructor The function that is called to initialize a new object<br/>
+■ hasOwnProperty Returns a Boolean indicator of whether the current object has the
+specified property<br/>
+■ isPrototypeOf Returns a Boolean indicator of whether the current object is in the
+specified object’s prototype object chain<br/>
+■ propertyIsEnumerable Returns true if the object can be enumerated in a for...in
+loop<br/>
+■ toLocalString Converts a date to a string value based on the current local<br/>
+■ toString Returns the string representation of the current object<br/>
+■ valueOf Returns the value of the current object converted to its most meaningful
+primitive value<br/><br/>
+After the object is created, you can dynamically add properties to it that hold the data and
+reference functions.<br/><br/>
+
+There is no class keyword in JavaScript, but you can simulate a class by starting with a function, which is actually the constructor function of the object.<br/><br/>
+
+In JavaScript, everything, including the function, is an Object type, which has a prototype
+property. The prototype itself is an object containing properties and methods that should be
+available to all instances of the type you’re working with. However, this prototype is typically specified externally to the constructor function, so the prototype doesn’t have access to
+private variables. Therefore, you must expose the data for the prototype to work.<br/><br/>
+
+<pre><code class="language-pascal">
+<strong>object literal pattern</strong>
+var car1 = {
+	year: 2000,
+	make: 'Ford',
+	model: 'Fusion',
+	getInfo: function () {
+		return 'Vehicle: ' + this.year + ' ' + this.make + ' ' + this.model;
+	}
+};
+
+var car2 = {
+	year: 2010,
+	make: 'BMW',
+	model: 'Z4',
+	getInfo: function () {
+		return 'Vehicle: ' + this.year + ' ' + this.make + ' ' + this.model;
+	}
+};
+
+
+
+<strong>Creating dynamic objects by using the factory pattern</strong>
+function getVehicle(theYear, theMake, theModel) {
+	var vehicle = new Object();
+	vehicle.year = theYear;
+	vehicle.make = theMake;
+	vehicle.model = theModel;
+	vehicle.getInfo = function () {
+		return 'Vehicle: ' + this.year + ' ' + this.make + ' ' + this.model;
+	};
+	return vehicle;
+}
+
+var car1 = getVehicle(2000, 'Ford', 'Fusion');
+var car2 = getVehicle(2010, 'BMW', 'Z4');
+
+
+
+<strong>Creating a class</strong>
+function Vehicle(theYear, theMake, theModel) {
+	var year = theYear;
+	var make = theMake;
+	var model = theModel;
+	this.getInfo = function () {
+		return 'Vehicle: ' + year + ' ' + make + ' ' + model;
+	};
+}
+
+var car1 = new Vehicle(2000, 'Ford', 'Fusion');
+var car2 = new Vehicle(2010, 'BMW', 'Z4');
+
+var actual = car1.getInfo();
+
+
+<strong>prototype property</strong>
+function Vehicle(theYear, theMake, theModel) {
+	this.year = theYear;
+	this.make = theMake;
+	this.model = theModel;
+}
+
+Vehicle.prototype.getInfo = function () {
+	return 'Vehicle: ' + this.year + ' ' + this.make + ' ' + this.model;
+}
+
+var car1 = new Vehicle(2000, 'Ford', 'Fusion');
+var car2 = new Vehicle(2010, 'BMW', 'Z4');
+
+
+
+<strong>Debating the prototype/private compromise</strong>
+function Vehicle(theYear, theMake, theModel) {
+	var year = theYear;
+	var make = theMake;
+	var model = theModel;
+	this.getYear = function () { return year; };
+	this.getMake = function () { return make; };
+	this.getModel = function () { return model; };
+}
+
+Vehicle.prototype.getInfo = function () {
+	return 'Vehicle: ' + this.getYear() + ' ' + this.getMake() + ' ' + this.getModel();
+}
+
+
+
+<strong>Implementing namespaces</strong>
+var vehicleCount = 5;
+var vehicles = new Array();
+function Car() { }
+function Truck() { }
+var repair = {
+	description: 'changed spark plugs',
+	cost: 100
+};
+
+//////////////////////////////////////////////////
+var myApp = myApp || {};
+myApp.vehicleCount = 5;
+myApp.vehicles = new Array();
+myApp.Car = function () { }
+myApp.Truck = function () { }
+myApp.repair = {
+	description: 'changed spark plugs',
+	cost: 100
+};
+
+//////////////////////////////////////////////////
+(function () {
+	this.myApp = this.myApp || {};
+	var ns = this.myApp;
+	var vehicleCount = 5;
+	var vehicles = new Array();
+	ns.Car = function () { }
+	ns.Truck = function () { }
+	var repair = {
+		description: 'changed spark plugs',
+		cost: 100
+	};
+}());
+
+//////////////////////////////////////////////////
+(function () {
+	this.myApp = this.myApp || {};
+	var rootNs = this.myApp;
+	rootNs.billing = rootNs.billing || {};
+	var ns = rootNs.billing;
+	var taxRate = .05;
+	ns.Invoice = function () { };
+}());
+
+
+
+<strong>Implementing inheritance</strong>
+var Vehicle = (function () {
+	function Vehicle(year, make, model) {
+		this.year = year;
+		this.make = make;
+		this.model = model;
+	}
+
+	Vehicle.prototype.getInfo = function () {
+		return this.year + ' ' + this.make + ' ' + this.model;
+	};
+
+	Vehicle.prototype.startEngine = function () {
+		return 'Vroom';
+	};
+
+	return Vehicle;
+})();
+
+var Car = (function (parent) {
+	Car.prototype = new Vehicle();
+	Car.prototype.constructor = Car;
+	function Car(year, make, model) {
+		parent.call(this, year, make, model);
+		this.wheelQuantity = 4;
+	}
+	Car.prototype.getInfo = function () {
+		return 'Vehicle Type: Car ' + parent.prototype.getInfo.call(this);
+	};
+	return Car;
+})(Vehicle);
+
+var Boat = (function (parent) {
+	Boat.prototype = new Vehicle();
+	Boat.prototype.constructor = Boat;
+	function Boat(year, make, model) {
+	parent.call(this, year, make, model);
+		this.propellerBladeQuantity = 3;
+	}
+	Boat.prototype.getInfo = function () {
+		return 'Vehicle Type: Boat ' + parent.prototype.getInfo.call(this);
+	};
+	return Boat;
+})(Vehicle);
+</code></pre>
+
+referance: Ch6-L1
+Update: Ch3-L1,2,3 
+  </div>
+</article>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+</body>
+</html>

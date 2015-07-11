@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script>
+			var car1 = {
+				year: 2000,
+				make: 'Ford',
+				model: 'Fusion',
+				getInfo: function () {
+					return 'Vehicle: ' + this.year + ' ' + this.make + ' ' + this.model;
+				}
+			};
+
+			var car2 = {
+				year: 2010,
+				make: 'BMW',
+				model: 'Z4',
+				getInfo: function () {
+					return 'Vehicle: ' + this.year + ' ' + this.make + ' ' + this.model;
+				}
+			};
+
+			// alert(car1.getInfo());
+			// alert(car2.getInfo());
+			// alert(car1.getInfo());
+
+			function getVehicle(theYear, theMake, theModel) {
+				var vehicle = new Object();
+				vehicle.year = theYear;
+				vehicle.make = theMake;
+				vehicle.model = theModel;
+				vehicle.getInfo = function () {
+					return 'Vehicle: ' + this.year + ' ' + this.make + ' ' + this.model;
+				};
+				return vehicle;
+			}
+
+			// var car1 = getVehicle(2015, 'Ford', 'Fusion');
+			// var car2 = getVehicle(2020, 'BMW', 'Z4');
+
+			// alert(car1.getInfo());
+			// alert(car2.getInfo());
+			// alert(car1.getInfo());
+
+			// function Vehicle(theYear, theMake, theModel) {
+			// 	var year = theYear;
+			// 	var make = theMake;
+			// 	var model = theModel;
+			// 	this.getInfo = function () {
+			// 		return 'Vehicle: ' + year + ' ' + make + ' ' + model;
+			// 	};
+			// }
+
+			// var car1 = new Vehicle(2001, 'Ford', 'Fusion');
+			// var car2 = new Vehicle(2011, 'BMW', 'Z4');
+
+			// alert(car1.getInfo());
+			// alert(car2.getInfo());
+			// alert(car1.getInfo());
+
+			function Vehicle(theYear, theMake, theModel) {
+				this.year = theYear;
+				this.make = theMake;
+				this.model = theModel;
+			}
+			Vehicle.prototype.getInfo = function () {
+				return 'Vehicle: ' + this.year + ' ' + this.make + ' ' + this.model;
+			}
+
+			var car1 = new Vehicle(2001, 'Ford', 'Fusion');
+			var car2 = new Vehicle(2011, 'BMW', 'Z4');
+
+			alert(car1.getInfo());
+			alert(car2.getInfo());
+			alert(car1.getInfo());
+		</script>
+	</head>
+	<body>
+	</body>
+</html>

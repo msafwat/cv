@@ -1,0 +1,13 @@
+{
+	"name": "msafwat_senior_software_developer_cv",
+	"version": "0.0.0",
+	"description": "MSafwat Senior Software Developer CV",
+	"main": "bin/main.js",
+	"scripts": {"test": "echo \"Error: no test specified\" && exit 1"},
+	"repository": "",
+	"keywords": ["CV", "msafwat"],
+	"author": "Moustafa Safwat",
+	"license": "BSD",
+	"private": true,
+	"dependencies": {"express": "3.0.0", "formidable": "1.x", "nodemailer": "~0.7.1"}
+}

@@ -1,0 +1,64 @@
+
+
+  <div class="container-fluid">  
+  <div class="row">
+    <div class="jumbotron col-md-8 col-md-offset-2" style="text-align:center">
+ 
+          <h2>Asynchronous Operations</h2>
+       
+    </div>
+  	<article class="col-md-8 col-md-offset-2"> 
+Web workers are useful for execution of a script file in a background task. The worker can send messages to the spawning task by posting messages to an event handler specified by the creator. Messages can be any object that can be serialized. The worker thread does not block the user interface thread, so the UI remains fast and fluid.<br/><br/>
+
+Web workers state is isolated from the webpage. When messages are posted to and from the web worker, the message object is serialized. This creates a copy of the message, so the web worker and the creator never reference the same object. Web workers also lack synchronization locks, critical sections, semaphores, or mutexes. They do not have access to the document object model (DOM), so if you need to access the DOM, the web worker must post a message back to the creator, and the creator must process the message and access the DOM as needed.<br/><br/>
+
+You can stop a web worker by calling the worker.terminate() method from the creator or calling the close() method inside the worker itself.<br/><br/>
+
+<pre><code class="language-pascal">
+<strong>Page</strong>
+&lt;!DOCTYPE html>
+&lt;html xmlns="http://www.w3.org/1999/xhtml">
+  &lt;head>
+    &lt;title></title>
+    &lt;script src="Scripts/jquery-1.8.2.js"&gt;&lt;/script&gt;
+    &lt;script src="default.js"&gt;&lt;/script&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;input type="text" id="message" placeholder="Enter message here" /&gt;&lt;br /&gt;
+    &lt;button id="btnSend" type="button"&gt;Send Message&lt;/button&gt;&lt;br /&gt;
+    &lt;div id="result"&gt;&lt;/div&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+
+
+
+<strong>default.js</strong>
+var worker = new Worker('myWork.js');
+worker.onmessage = function (e) {
+	$('#result').append(e.data + '&lt;br/&gt;');
+}
+worker.onerror = function (e) {
+	$('#result').append('Error: ' + e.data + '&lt;br/&gt;');
+}
+
+$('document').ready(function () {
+	$('#btnSend').on('click', function () {
+		worker.postMessage($('#message').val());
+	});
+});
+
+
+
+<strong>myWork.js</strong>
+self.onmessage = function (e) {
+	for (c in e.data) {
+		postMessage(e.data[c].toUpperCase());
+	}
+}
+</code></pre>
+
+referance: Ch9-L2
+Update: Ch9-L1
+		</article>
+	  </div>
+</div>
